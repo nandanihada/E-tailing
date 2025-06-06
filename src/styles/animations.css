@@ -7,6 +7,9 @@
     background-position: 200% 0;
   }
 }
+.border-primary {
+  border-color: #4f46e5; /* Or use your primary theme color */
+}
 
 .shimmer {
   position: relative;

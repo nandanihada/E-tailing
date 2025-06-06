@@ -42,10 +42,11 @@ const Footer = () => {
             <h5 style={{ color: 'var(--white)', marginBottom: 'var(--spacing-lg)' }}>Company</h5>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
               <FooterLink to="/about" label="About Us" />
-              <FooterLink to="/blog" label="Blog" />
+              <FooterLink to="/services" label="Services" />
               <FooterLink to="/contact" label="Contact" />
-              <FooterLink to="/" label="Shipping & Returns" />
-              <FooterLink to="/" label="Privacy Policy" />
+              <FooterLink to="/shipping" label="Shipping & Cancellation" />
+              <FooterLink to="/terms" label="Terms and condition" />
+              <FooterLink to="/return" label="Return and Refund Policy" />
             </ul>
           </div>
           

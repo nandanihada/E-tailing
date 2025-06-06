@@ -1,74 +1,124 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiCalendar, FiUser, FiTag } from 'react-icons/fi'
+import { FiShoppingCart, FiSmartphone, FiTruck, FiCreditCard, FiHeadphones, FiHardDrive, FiGift, FiShield, FiBriefcase, FiSettings } from 'react-icons/fi'
 
-const blogPosts = [
+const services = [
   {
     id: 1,
-    title: '7 Weird Things That Actually Make Life Easier',
-    slug: '7-weird-things',
-    excerpt: "Life's messy. These 7 products make it a bit less chaotic. From self-cleaning pads to collapsible crates, here's our best-kept secrets.",
-    image: 'https://images.pexels.com/photos/4271317/pexels-photo-4271317.jpeg?auto=compress&cs=tinysrgb&w=800',
-    author: 'Priya Sharma',
-    date: 'August 15, 2023',
-    category: 'Productivity',
-    featured: true
+    title: 'E-Commerce Platform',
+    slug: 'e-commerce-platform',
+    excerpt: "Seamless digital shopping experience with user-friendly navigation, advanced search, secure checkout, and multiple payment options.",
+    image: 'https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=800',
+    icon: <FiShoppingCart />,
+    category: 'Shopping',
+    featured: true,
+    details: [
+      "User-friendly website with intuitive navigation",
+      "Advanced search and filter options",
+      "Detailed product descriptions",
+      "High-resolution product images/videos",
+      "Customer reviews and ratings",
+      "Secure checkout process",
+      "Multiple payment options",
+      "Mobile-optimized platform"
+    ]
   },
   {
     id: 2,
-    title: 'Kitchen Gadgets You Never Knew You Needed',
-    slug: 'kitchen-gadgets',
-    excerpt: 'Your kitchen is probably missing these 5 game-changing tools that make cooking faster, cleaner, and way more fun.',
-    image: 'https://images.pexels.com/photos/4226901/pexels-photo-4226901.jpeg?auto=compress&cs=tinysrgb&w=800',
-    author: 'Rahul Mehra',
-    date: 'July 28, 2023',
-    category: 'Kitchen'
+    title: 'Mobile Accessories',
+    slug: 'mobile-accessories',
+    excerpt: 'Premium cases, charging solutions, and protection accessories for all major smartphone brands.',
+    image: 'https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=800',
+    icon: <FiSmartphone />,
+    category: 'Products',
+    details: [
+      "Premium cases for iPhone, Samsung, OnePlus, Xiaomi",
+      "Rugged protection cases",
+      "Screen protectors",
+      "Fast charging cables",
+      "Wireless charging pads",
+      "Power banks (5000mAh to 30000mAh)",
+      "Starting from ₹200"
+    ]
   },
   {
     id: 3,
-    title: 'Tech Wonders Under ₹500',
-    slug: 'tech-wonders',
-    excerpt: 'Budget-friendly tech doesn\'t have to be boring. These affordable gadgets deliver functionality and fun without breaking the bank.',
-    image: 'https://images.pexels.com/photos/4264047/pexels-photo-4264047.jpeg?auto=compress&cs=tinysrgb&w=800',
-    author: 'Vikram Singh',
-    date: 'June 12, 2023',
-    category: 'Tech'
+    title: 'Delivery Services',
+    slug: 'delivery-services',
+    excerpt: 'Pan-India delivery with standard, express, and same-day options to meet all your urgency needs.',
+    image: 'https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=800',
+    icon: <FiTruck />,
+    category: 'Logistics',
+    details: [
+      "Standard Delivery (3-7 business days)",
+      "Express Delivery (1-3 business days)",
+      "Same-Day Delivery (Metro cities)",
+      "Real-time shipment tracking",
+      "Secure packaging",
+      "Coverage: 25,000+ PIN codes",
+      "Starting from ₹40"
+    ]
   },
   {
     id: 4,
-    title: 'The Psychology of Quirky Products',
-    slug: 'psychology-quirky-products',
-    excerpt: 'Why do unusual products bring us so much joy? We explore the science behind why uniqueness triggers happiness and satisfaction.',
-    image: 'https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=800',
-    author: 'Dr. Ananya Patel',
-    date: 'May 5, 2023',
-    category: 'Psychology'
+    title: 'Payment Services',
+    slug: 'payment-services',
+    excerpt: 'Multiple secure payment options including digital wallets, UPI, cards, and cash on delivery.',
+    image: 'https://images.pexels.com/photos/4386158/pexels-photo-4386158.jpeg?auto=compress&cs=tinysrgb&w=800',
+    icon: <FiCreditCard />,
+    category: 'Finance',
+    details: [
+      "Credit/Debit Cards (Visa, MasterCard, RuPay)",
+      "UPI Payments (Google Pay, PhonePe)",
+      "Digital Wallets (Paytm, Amazon Pay)",
+      "Cash on Delivery (15,000+ locations)",
+      "Bank Transfer/NEFT",
+      "256-bit SSL encryption",
+      "PCI DSS compliant"
+    ]
   },
   {
     id: 5,
-    title: 'Travel Hacks: Tiny Tools, Big Impact',
-    slug: 'travel-hacks',
-    excerpt: 'These pocket-sized travel companions will transform your next trip. From portable washers to collapsible everything.',
-    image: 'https://images.pexels.com/photos/934718/pexels-photo-934718.jpeg?auto=compress&cs=tinysrgb&w=800',
-    author: 'Aditya Kapoor',
-    date: 'April 22, 2023',
-    category: 'Travel'
+    title: 'Audio & Electronics',
+    slug: 'audio-electronics',
+    excerpt: 'Premium sound solutions and smart electronics to enhance your digital lifestyle.',
+    image: 'https://images.pexels.com/photos/3394663/pexels-photo-3394663.jpeg?auto=compress&cs=tinysrgb&w=800',
+    icon: <FiHeadphones />,
+    category: 'Products',
+    details: [
+      "Bluetooth earphones and headphones",
+      "Wired earphones with premium sound",
+      "Portable Bluetooth speakers",
+      "Gaming headsets",
+      "Fitness trackers and smartwatches",
+      "Smart home devices",
+      "Tech gadgets and accessories"
+    ]
   },
   {
     id: 6,
-    title: 'Gift Guide: For People Who Have Everything',
-    slug: 'gift-guide',
-    excerpt: 'Shopping for someone impossible? These conversation-starting gifts will surprise even the person who seems to have it all.',
-    image: 'https://images.pexels.com/photos/1666067/pexels-photo-1666067.jpeg?auto=compress&cs=tinysrgb&w=800',
-    author: 'Neha Gupta',
-    date: 'March 10, 2023',
-    category: 'Gifting'
+    title: 'Computer Accessories',
+    slug: 'computer-accessories',
+    excerpt: 'Enhance your productivity with our range of laptop accessories and storage solutions.',
+    image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=800',
+    icon: <FiHardDrive />,
+    category: 'Products',
+    details: [
+      "Laptop bags and sleeves",
+      "Wireless keyboards and mice",
+      "USB hubs and adapters",
+      "Monitor stands",
+      "External hard drives and SSDs",
+      "USB flash drives",
+      "Memory cards (SD, microSD)"
+    ]
   }
 ]
 
-const BlogPage = () => {
-  const featuredPost = blogPosts.find(post => post.featured)
-  const regularPosts = blogPosts.filter(post => !post.featured)
+const ServicesPage = () => {
+  const featuredService = services.find(service => service.featured)
+  const regularServices = services.filter(service => !service.featured)
   
   return (
     <div className="blog-page">
@@ -81,7 +131,7 @@ const BlogPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 style={{ marginBottom: 'var(--spacing-md)' }}>
-              Quirky Insights
+              Our Services
             </h1>
             <p style={{ 
               fontSize: '1.25rem',
@@ -89,14 +139,22 @@ const BlogPage = () => {
               maxWidth: '700px',
               margin: '0 auto var(--spacing-xl)',
             }}>
-              Stories, guides, and discoveries from the world of unusual products
+              Complete Tech Solutions at Your Doorstep
+            </p>
+            <p style={{ 
+              fontSize: '1rem',
+              color: 'var(--gray-600)',
+              maxWidth: '800px',
+              margin: '0 auto var(--spacing-xl)',
+            }}>
+              Survey Titans is your one-stop destination for all technology needs. We offer comprehensive services designed to enhance your digital lifestyle with quality products, exceptional support, and unmatched convenience.
             </p>
           </motion.div>
         </div>
       </section>
       
-      {/* Featured Post */}
-      {featuredPost && (
+      {/* Featured Service */}
+      {featuredService && (
         <section className="featured-post section" style={{ paddingTop: 'var(--spacing-lg)' }}>
           <div className="container">
             <motion.div 
@@ -114,8 +172,8 @@ const BlogPage = () => {
             >
               <div style={{ gridColumn: 'span 7', position: 'relative' }}>
                 <img 
-                  src={featuredPost.image} 
-                  alt={featuredPost.title}
+                  src={featuredService.image} 
+                  alt={featuredService.title}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -133,7 +191,7 @@ const BlogPage = () => {
                   fontSize: '0.875rem',
                   fontWeight: 600,
                 }}>
-                  Featured
+                  Featured Service
                 </div>
               </div>
               
@@ -153,18 +211,14 @@ const BlogPage = () => {
                   fontSize: '0.875rem',
                 }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
-                    <FiCalendar size={14} />
-                    {featuredPost.date}
-                  </span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
-                    <FiTag size={14} />
-                    {featuredPost.category}
+                    {featuredService.icon}
+                    {featuredService.category}
                   </span>
                 </div>
                 
                 <h2 style={{ marginBottom: 'var(--spacing-md)' }}>
-                  <Link to={`/blog/${featuredPost.slug}`} style={{ color: 'var(--gray-900)', textDecoration: 'none' }}>
-                    {featuredPost.title}
+                  <Link to={`/services/${featuredService.slug}`} style={{ color: 'var(--gray-900)', textDecoration: 'none' }}>
+                    {featuredService.title}
                   </Link>
                 </h2>
                 
@@ -173,12 +227,22 @@ const BlogPage = () => {
                   color: 'var(--gray-700)',
                   lineHeight: 1.6,
                 }}>
-                  {featuredPost.excerpt}
+                  {featuredService.excerpt}
                 </p>
+                
+                <ul style={{ 
+                  marginBottom: 'var(--spacing-lg)',
+                  color: 'var(--gray-600)',
+                  paddingLeft: 'var(--spacing-md)',
+                }}>
+                  {featuredService.details.slice(0, 4).map((detail, index) => (
+                    <li key={index} style={{ marginBottom: 'var(--spacing-xs)' }}>{detail}</li>
+                  ))}
+                </ul>
                 
                 <div style={{ marginTop: 'auto' }}>
                   <Link 
-                    to={`/blog/${featuredPost.slug}`}
+                    to={`/services/${featuredService.slug}`}
                     style={{ 
                       display: 'flex',
                       alignItems: 'center',
@@ -189,7 +253,7 @@ const BlogPage = () => {
                     }}
                     className="hover-scale"
                   >
-                    Read Full Article
+                    View Full Service Details
                     <FiArrowRight size={16} />
                   </Link>
                 </div>
@@ -199,18 +263,18 @@ const BlogPage = () => {
         </section>
       )}
       
-      {/* Regular Posts */}
+      {/* Regular Services */}
       <section className="blog-posts section">
         <div className="container">
-          <h2 style={{ marginBottom: 'var(--spacing-xl)' }}>Latest Articles</h2>
+          <h2 style={{ marginBottom: 'var(--spacing-xl)' }}>Our Comprehensive Services</h2>
           
           <div style={{ 
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
             gap: 'var(--spacing-xl)',
           }}>
-            {regularPosts.map((post, index) => (
-              <BlogCard key={post.id} post={post} index={index} />
+            {regularServices.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
             ))}
           </div>
         </div>
@@ -232,7 +296,7 @@ const BlogPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Subscribe to Quirky Insights
+              Get Started With Survey Titans
             </motion.h2>
             
             <motion.p
@@ -246,7 +310,7 @@ const BlogPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Get our latest articles, product recommendations, and exclusive offers delivered directly to your inbox.
+              Sign up to explore our complete range of services and get exclusive offers.
             </motion.p>
             
             <motion.div
@@ -285,7 +349,7 @@ const BlogPage = () => {
                 }}
                 className="hover-scale"
               >
-                Subscribe
+                Sign Up
               </button>
             </motion.div>
           </div>
@@ -295,7 +359,7 @@ const BlogPage = () => {
   )
 }
 
-const BlogCard = ({ post, index }) => {
+const ServiceCard = ({ service, index }) => {
   return (
     <motion.div 
       className="blog-card glass hover-lift"
@@ -311,10 +375,10 @@ const BlogCard = ({ post, index }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <div style={{ position: 'relative' }}>
-        <Link to={`/blog/${post.slug}`}>
+        <Link to={`/services/${service.slug}`}>
           <img 
-            src={post.image} 
-            alt={post.title}
+            src={service.image} 
+            alt={service.title}
             style={{
               width: '100%',
               height: '200px',
@@ -332,8 +396,12 @@ const BlogCard = ({ post, index }) => {
           borderRadius: 'var(--radius-sm)',
           fontSize: '0.75rem',
           fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--spacing-xs)'
         }}>
-          {post.category}
+          {service.icon}
+          {service.category}
         </div>
       </div>
       
@@ -343,41 +411,34 @@ const BlogCard = ({ post, index }) => {
         flexDirection: 'column',
         flex: 1,
       }}>
-        <div style={{ 
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--spacing-md)',
-          marginBottom: 'var(--spacing-md)',
-          color: 'var(--gray-600)',
-          fontSize: '0.75rem',
-        }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
-            <FiUser size={12} />
-            {post.author}
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
-            <FiCalendar size={12} />
-            {post.date}
-          </span>
-        </div>
-        
         <h3 style={{ marginBottom: 'var(--spacing-md)', fontSize: '1.25rem' }}>
-          <Link to={`/blog/${post.slug}`} style={{ color: 'var(--gray-900)', textDecoration: 'none' }}>
-            {post.title}
+          <Link to={`/services/${service.slug}`} style={{ color: 'var(--gray-900)', textDecoration: 'none' }}>
+            {service.title}
           </Link>
         </h3>
         
         <p style={{ 
           color: 'var(--gray-600)',
-          marginBottom: 'var(--spacing-lg)',
+          marginBottom: 'var(--spacing-md)',
           lineHeight: 1.6,
-          flex: 1,
         }}>
-          {post.excerpt}
+          {service.excerpt}
         </p>
         
+        <ul style={{ 
+          color: 'var(--gray-600)',
+          marginBottom: 'var(--spacing-md)',
+          paddingLeft: 'var(--spacing-md)',
+          fontSize: '0.875rem',
+          flex: 1,
+        }}>
+          {service.details.slice(0, 3).map((detail, index) => (
+            <li key={index} style={{ marginBottom: 'var(--spacing-xs)' }}>{detail}</li>
+          ))}
+        </ul>
+        
         <Link 
-          to={`/blog/${post.slug}`}
+          to={`/services/${service.slug}`}
           style={{ 
             display: 'flex',
             alignItems: 'center',
@@ -389,7 +450,7 @@ const BlogCard = ({ post, index }) => {
           }}
           className="hover-scale"
         >
-          Read More
+          Learn More
           <FiArrowRight size={16} />
         </Link>
       </div>
@@ -397,4 +458,4 @@ const BlogCard = ({ post, index }) => {
   )
 }
 
-export default BlogPage
+export default ServicesPage

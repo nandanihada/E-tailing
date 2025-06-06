@@ -1,25 +1,49 @@
-import { useState } from 'react'
+
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FiArrowLeft, FiShoppingCart, FiHeart, FiPlay, FiShare2, FiCheck } from 'react-icons/fi'
 import Button from '../components/ui/Button'
 import ProductCard from '../components/ui/ProductCard'
+import { useEffect, useState } from 'react'
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore'
+import { db, auth } from '../lib/firebase';
 import products from '../data/products'
 
 const ProductPage = () => {
-  const { slug } = useParams()
-  const product = products.find(p => p.slug === slug)
-  
-  const [mainImage, setMainImage] = useState(product?.image)
+   const { slug } = useParams()
+  const [product, setProduct] = useState(null)
+  const [relatedProducts, setRelatedProducts] = useState([])
+  const [mainImage, setMainImage] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [isAddedToCart, setIsAddedToCart] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
+
   
-  // Find related products (same category, excluding current product)
-  const relatedProducts = products
-    .filter(p => p.category === product?.category && p.id !== product?.id)
-    .slice(0, 4)
-  
+  // // Find related products (same category, excluding current product)
+  // const relatedProducts = products
+  //   .filter(p => p.category === product?.category && p.id !== product?.id)
+  //   .slice(0, 4)
+
+   useEffect(() => {
+    const fetchProduct = async () => {
+      const productsSnapshot = await getDocs(collection(db, 'products'))
+      const productList = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+      const currentProduct = productList.find(p => p.name.toLowerCase().replace(/\s+/g, '-') === slug)
+
+      if (currentProduct) {
+        setProduct(currentProduct)
+        setMainImage(currentProduct.image)
+
+        const related = productList.filter(p => 
+          p.category === currentProduct.category && 
+          p.name !== currentProduct.name
+        ).slice(0, 4)
+        setRelatedProducts(related)
+      }
+    }
+
+    fetchProduct()
+  }, [slug])
   if (!product) {
     return (
       <div className="container" style={{ padding: 'var(--spacing-xxl) 0' }}>

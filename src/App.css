@@ -40,3 +40,6 @@
 .read-the-docs {
   color: #888;
 }
+.border-primary {
+  border-color: #4f46e5; /* Or use your primary theme color */
+}
